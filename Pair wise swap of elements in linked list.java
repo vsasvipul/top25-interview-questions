@@ -10,18 +10,18 @@ class LinkedList {
         } 
     } 
   
-    void pairWiseSwap() 
-    { 
-        Node temp = head; 
+    void pairWiseSwap(struct node* head) 
+{ 
+    
+    if (head != NULL && head->next != NULL) { 
   
-        while (temp != null && temp.next != null) { 
+    
+        swap(&head->data, &head->next->data); 
   
-            int k = temp.data; 
-            temp.data = temp.next.data; 
-            temp.next.data = k; 
-            temp = temp.next.next; 
-        } 
+    
+        pairWiseSwap(head->next->next); 
     } 
+} 
   
   
     public void push(int new_data) 
