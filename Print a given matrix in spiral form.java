@@ -1,54 +1,39 @@
-def spiralPrint(m, n, a):
-    k = 0
-    l = 0
+def printdata(arr, i, j, m, n):
  
-    ''' k - starting row index
-        m - ending row index
-        l - starting column index
-        n - ending column index
-        i - iterator '''
+    # If i or j lies outside the matrix
+    if (i >= m or j >= n):
+        return
  
-    while (k < m and l < n):
+    # Print First Row
+    for p in range(i, n):
+        print(arr[i][p], end=" ")
  
-        # Print the first row from
-        # the remaining rows
-        for i in range(l, n):
-            print(a[k][i], end=" ")
+    # Print Last Column
+    for p in range(i + 1, m):
+        print(arr[p][n - 1], end=" ")
  
-        k += 1
+    # Print Last Row, if Last and
+    # First Row are not same
+    if ((m - 1) != i):
+        for p in range(n - 2, j - 1, -1):
+            print(arr[m - 1][p], end=" ")
  
-        # Print the last column from
-        # the remaining columns
-        for i in range(k, m):
-            print(a[i][n - 1], end=" ")
+    # Print First Column, if Last and
+    # First Column are not same
+    if ((n - 1) != j):
+        for p in range(m - 2, i, -1):
+            print(arr[p][j], end=" ")
  
-        n -= 1
- 
-        # Print the last row from
-        # the remaining rows
-        if (k < m):
- 
-            for i in range(n - 1, (l - 1), -1):
-                print(a[m - 1][i], end=" ")
- 
-            m -= 1
- 
-        # Print the first column from
-        # the remaining columns
-        if (l < n):
-            for i in range(m - 1, k - 1, -1):
-                print(a[i][l], end=" ")
- 
-            l += 1
+    printdata(arr, i + 1, j + 1, m - 1, n - 1)
  
  
-# Driver Code
-a = [[1, 2, 3, 4, 5, 6],
-     [7, 8, 9, 10, 11, 12],
-     [13, 14, 15, 16, 17, 18]]
- 
-R = 3
-C = 6
+# Driver code
+R = 4
+C = 4
+arr = [[1, 2, 3, 4],
+       [5, 6, 7, 8],
+       [9, 10, 11, 12],
+       [13, 14, 15, 16]]
  
 # Function Call
-spiralPrint(R, C, a)
+printdata(arr, 0, 0, R, C)
